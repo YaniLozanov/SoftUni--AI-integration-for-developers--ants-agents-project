@@ -1,0 +1,452 @@
+/*
+ * Meta: Global styles for the AI Ant Swarm application three-panel layout.
+ * Provides layout, panel styling, and UI components used across the app.
+ */
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      sans-serif;
+    background: linear-gradient(
+      135deg,
+      #667eea 0%,
+      #764ba2 25%,
+      #f093fb 50%,
+      #f5576c 75%,
+      #4facfe 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 550px 1fr 560px;
+    height: 100vh;
+    max-height: 100vh;
+    gap: 2px;
+    padding: 2px;
+    overflow: hidden;
+  }
+  
+  .panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    max-height: 100vh;
+  }
+  
+  /* Left Panel - Ants Configuration */
+  .ants-panel {
+    background: rgba(255, 255, 255, 0.98);
+    min-height: 0;
+    overflow: hidden;
+  }
+  
+  .panel-header {
+    padding: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba(103, 126, 234, 0.1) 0%,
+      rgba(245, 87, 108, 0.1) 100%
+    );
+  }
+  
+  .panel-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 4px;
+  }
+  
+  .panel-subtitle {
+    font-size: 14px;
+    color: #718096;
+  }
+  
+  .add-ant-btn {
+    margin: 20px;
+    margin-bottom: 16px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .add-ant-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  }
+  
+  .ants-list {
+    flex: 1;
+    padding: 0 20px 20px 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+    min-height: 0;
+  }
+  
+  .ant-row {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr auto 1fr 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  
+  .ant-row:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  .ant-name-input {
+    padding: 8px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d3748;
+    width: 100%;
+  }
+  
+  .ant-name-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  
+  .model-select {
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d3748;
+  }
+  
+  .model-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .custom-checkbox {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  .custom-checkbox:checked {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+  }
+  
+  .custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .checkbox-label {
+    font-size: 12px;
+    color: #4a5568;
+    cursor: pointer;
+  }
+  
+  .param-input {
+    padding: 6px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    font-size: 11px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2d3748;
+    text-align: center;
+    transition: all 0.2s ease;
+    width: 60px;
+    height: 32px;
+  }
+  
+  .param-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+  }
+  
+  .param-input:disabled {
+    background: rgba(0, 0, 0, 0.05);
+    color: #a0aec0;
+    cursor: not-allowed;
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+  
+  .param-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  .param-label {
+    font-size: 10px;
+    color: #718096;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Center Panel - Chat Area */
+  .chat-panel {
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  .chat-area {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 16px 20px;
+    border-radius: 20px;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  
+  .message.user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 6px;
+  }
+  
+  .message.assistant {
+    background: rgba(0, 0, 0, 0.05);
+    color: #2d3748;
+    align-self: flex-start;
+    border-bottom-left-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  
+  .chat-input-container {
+    padding: 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: linear-gradient(
+      135deg,
+      rgba(103, 126, 234, 0.05) 0%,
+      rgba(245, 87, 108, 0.05) 100%
+    );
+    position: relative;
+  }
+  
+  .chat-input {
+    width: 100%;
+    padding: 16px 60px 16px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    color: #2d3748;
+    font-size: 14px;
+    font-family: 'SF Pro Display', 'Segoe UI', 'Roboto', -apple-system,
+      sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    resize: none;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  
+  .send-button {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    z-index: 10;
+  }
+  
+  .send-button:hover {
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  }
+  
+  .send-button:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+  
+  .chat-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: white;
+  }
+  
+  .chat-input::placeholder {
+    color: #a0aec0;
+  }
+  
+  /* Right Panel - Responses */
+  .responses-panel {
+    background: rgba(255, 255, 255, 0.98);
+  }
+  
+  .responses-list {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .response-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .response-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: white;
+  }
+  
+  .response-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .response-ant-name {
+    font-weight: 600;
+    color: #2d3748;
+  }
+  
+  .response-model {
+    font-size: 11px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+  
+  .response-content {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.5;
+  }
+  
+  .loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #718096;
+    font-size: 14px;
+  }
+  
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Ant Swarm</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Panel - Ants Configuration -->
+      <div class="panel ants-panel">
+        <div class="panel-header">
+          <div class="panel-title">Ant Swarm</div>
+          <div class="panel-subtitle">Configure your AI agents</div>
+        </div>
+
+        <button class="add-ant-btn" id="addAntBtn">+ Add New Ant</button>
+
+        <div class="ants-list scrollbar" id="antsList"></div>
+      </div>
+
+      <!-- Center Panel - Chat Area -->
+      <div class="panel chat-panel">
+        <div class="panel-header">
+          <div class="panel-title">Conversation</div>
+          <div class="panel-subtitle">Chat with your AI swarm</div>
+        </div>
+
+        <div class="chat-area scrollbar" id="chatArea">
+          <div class="message assistant">
+            Hello! I'm ready to help you solve complex problems using our AI ant
+            swarm. What would you like to work on today?
+          </div>
+        </div>
+
+        <div class="chat-input-container">
+          <textarea
+            id="chatInput"
+            class="chat-input"
+            placeholder="Describe your problem or ask a question..."
+            rows="3"
+          ></textarea>
+          <button class="send-button" id="sendBtn" title="Send message">➤</button>
+        </div>
+      </div>
+
+      <!-- Right Panel - Ant Responses -->
+      <div class="panel responses-panel">
+        <div class="panel-header">
+          <div class="panel-title">Ant Responses</div>
+          <div class="panel-subtitle">Individual agent outputs</div>
+        </div>
+
+        <div class="responses-list scrollbar" id="responsesList"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+  </html>
+
+
