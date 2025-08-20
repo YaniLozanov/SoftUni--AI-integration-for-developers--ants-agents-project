@@ -82,5 +82,32 @@ window.ANTHROPIC_API_KEY = 'anthropic-...';
 ### Security
 - Never commit real API keys. Rotate any exposed keys immediately.
 
+### Contributing  
+
+This repository is part of our **SoftUni course – AI Integration for Developers**.  
+The main idea: you already have a working foundation, but the real challenge is to **push it further**.  
+
+If you are one of my students, here’s how you can contribute:  
+
+1. **Fork this repo** to your own GitHub account.  
+2. **Create a branch** for your feature or fix (e.g. `feature/new-agent` or `fix/ui-bug`).  
+3. **Make your changes** – try to keep them small and meaningful.  
+4. **Open a Pull Request** back to this repository with a clear description of what you did and why.  
+
+### What kind of contributions are welcome?  
+- New types of agents (different strategies / behaviors).  
+- Improvements to the simulation logic.  
+- Enhancements to the UI (make it easier to visualize or interact with).  
+- Refactoring and cleanup – code should be readable and maintainable.  
+- Documentation – explain how your part works so others can build on top of it.  
+
+### Rules of the game  
+- Small, incremental improvements are better than “big bang” rewrites.  
+- Document your thought process – show me *why* you made a change, not just *what* you changed.  
+- Respect your peers’ work. If you think something should be changed, explain it in the Pull Request.  
+
+This project is **yours to grow**. Treat it as an open playground: experiment, break things (carefully), and most importantly – learn by doing.  
+
+
 ### License
 MIT
