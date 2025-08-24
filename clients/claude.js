@@ -3,7 +3,6 @@
  * Reads API key from `window.ANTHROPIC_API_KEY` or `localStorage.ANTHROPIC_API_KEY`.
  */
 import { CLAUDE_CONFIG } from '../config/config.js';
-import { ANTHROPIC_API_KEY } from '../config/keys.js';
 import { CLAUDE_TOOLS } from '../utils/claudeTools.js';
 
 /**
@@ -19,13 +18,9 @@ import { CLAUDE_TOOLS } from '../utils/claudeTools.js';
  * @returns {Promise<{ text: string, raw: any }>} The assistant message text and the raw API response.
  */
 export async function requestClaude(configOrModel, topP, temperature, systemPrompt, prompt, maxOutputTokens) {
-  const apiKey = ANTHROPIC_API_KEY;
+  // API key is now handled by the backend proxy server.
 
-  if (!apiKey) {
-    throw new Error('Anthropic API key not found. Set `window.ANTHROPIC_API_KEY` or `localStorage[\'ANTHROPIC_API_KEY\']`.');
-  }
-
-  const url = 'https://api.anthropic.com/v1/messages';
+  const url = 'http://localhost:3001/api/anthropic';
 
   const providedConfig = typeof configOrModel === 'object' && configOrModel !== null
     ? configOrModel
@@ -61,9 +56,7 @@ export async function requestClaude(configOrModel, topP, temperature, systemProm
   const headers = {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   };

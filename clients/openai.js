@@ -3,7 +3,6 @@
  * Expects the API key to be available as `window.OPENAI_API_KEY` or in `localStorage` under `OPENAI_API_KEY`.
  */
 import { OPEN_AI_CONFIG } from '../config/config.js';
-import { OPENAI_API_KEY } from '../config/keys.js';
 
 /**
  * Calls OpenAI with the provided parameters and returns the response text and raw payload.
@@ -20,13 +19,9 @@ import { OPENAI_API_KEY } from '../config/keys.js';
  * @returns {Promise<{ text: string, raw: any }>} The assistant message text and the raw API response.
  */
 export async function requestOpenAI(configOrModel, topP, temperature, systemPrompt, prompt, maxOutputTokens) {
-  const apiKey = OPENAI_API_KEY;
+  // API key is now handled by the backend proxy server.
 
-  if (!apiKey) {
-    throw new Error('OpenAI API key not found. Set `window.OPENAI_API_KEY` or `localStorage[\'OPENAI_API_KEY\']`.');
-  }
-
-  const url = 'https://api.openai.com/v1/chat/completions';
+  const url = 'http://localhost:3001/api/openai';
 
   const providedConfig = typeof configOrModel === 'object' && configOrModel !== null
     ? configOrModel
@@ -55,8 +50,7 @@ export async function requestOpenAI(configOrModel, topP, temperature, systemProm
   const response = await fetch(url, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   });

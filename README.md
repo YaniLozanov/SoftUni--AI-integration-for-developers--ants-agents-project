@@ -72,7 +72,14 @@ window.ANTHROPIC_API_KEY = 'anthropic-...';
 `config/keys.js` reads from `window`, `localStorage`, then `process.env`.
 
 ### Run locally
-- Open `Live/index.html` directly, or serve `Live/` with a static server.
+1. Start the backend server:
+  ```sh
+  npm run start:server
+  ```
+2. Open `Live/index.html` using the Live Server VS Code extension (recommended):
+  - Right-click `index.html` and select **Open with Live Server**.
+  - This will serve your app at `http://localhost:PORT` and enable API calls to your backend.
+  - Alternatively, you can serve `Live/` with any static server.
 
 ### Change defaults
 - Models/params: `config/config.js`

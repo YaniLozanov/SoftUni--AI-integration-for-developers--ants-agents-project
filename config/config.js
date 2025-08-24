@@ -136,8 +136,6 @@ export const DEFAULT_ANT_NAMES = [
   'Draco',
 ];
 
-
-
 export default OPEN_AI_CONFIG;
 
 
